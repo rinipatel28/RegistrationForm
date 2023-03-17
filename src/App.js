@@ -1,9 +1,9 @@
 import './App.css';
-import RegisterForm from './components/RegisterForm.js'
+import Form2 from './components/Form2.js'
 function App() {
   return (
     <>
-    <RegisterForm></RegisterForm>
+    <Form2 />
     </>
   );
 }
