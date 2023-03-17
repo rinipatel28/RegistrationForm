@@ -22,12 +22,14 @@ export default function EditForm({data2,allData,index,show}) {
     setData(dataUpdated);
   };
 const validationSchema = Yup.object({
-  fname: Yup.string().required("First Name is required"),
+  fname: Yup.string().required("First Name is required")
+  .matches(/^[aA-zZ\s]+$/,"Only alphabets are allowed"),
   email: Yup.string().required("Email is required").email("Invalid email"),
   password: Yup
     .string('Enter your password')
     .min(8, 'Password should be of minimum 8 characters length')
-    .required('Password is required'),
+    .required('Password is required')
+    .matches(/[a-z]/,"Password must contain a lowercase letter"),
 });
   const formik = useFormik({
     initialValues: {
@@ -39,7 +41,7 @@ const validationSchema = Yup.object({
           transport:data2.transport,
           nationality: data2.nationality,
     },
-    // validationSchema: validationSchema,
+    validationSchema: validationSchema,
     onSubmit: (values) => {
 console.log(values)
 allData[index] = values
