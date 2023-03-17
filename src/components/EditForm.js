@@ -21,16 +21,21 @@ export default function EditForm({data2,allData,index,show}) {
     });
     setData(dataUpdated);
   };
-const validationSchema = Yup.object({
-  fname: Yup.string().required("First Name is required")
-  .matches(/^[aA-zZ\s]+$/,"Only alphabets are allowed"),
-  email: Yup.string().required("Email is required").email("Invalid email"),
-  password: Yup
-    .string('Enter your password')
-    .min(8, 'Password should be of minimum 8 characters length')
-    .required('Password is required')
-    .matches(/[a-z]/,"Password must contain a lowercase letter"),
-});
+  const validationSchema = Yup.object({
+    fname: Yup.string().required("First Name is required")
+    .matches(/^[aA-zZ\s]+$/,"Only alphabets are allowed"),
+    
+    email: Yup.string().required("Email is required").email("Invalid email"),
+    password: Yup
+      .string('Enter your password')
+      .min(8, 'Password should be of minimum 8 characters length')
+      .required('Password is required')
+      .matches(/[0-9]/,"Password must contain a number")
+      .matches(/[a-z]/,"Password must contain a lowercase letter")
+      .matches(/[A-Z]/,"Password must contain a uppercase letter")
+      .matches(/[^/W]/,"Password must contain a special symbol"),
+  
+  });
   const formik = useFormik({
     initialValues: {
       fname:data2.fname,

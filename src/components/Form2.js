@@ -35,7 +35,7 @@ const validationSchema = Yup.object({
     .matches(/[0-9]/,"Password must contain a number")
     .matches(/[a-z]/,"Password must contain a lowercase letter")
     .matches(/[A-Z]/,"Password must contain a uppercase letter")
-    .matches(/[^/W]/,"Password must contain a special symbol")
+    .matches(/[^/W]/,"Password must contain a special symbol"),
 
 });
   const formik = useFormik({
